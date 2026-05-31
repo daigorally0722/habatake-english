@@ -579,11 +579,12 @@
       </div>
     </div>
 
-    <!-- Cards grid — wrapper on popular card pushes badge above pcrd -->
-    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
+    <!-- Cards grid — all wrappers get padding-top:22px so tops are aligned -->
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 items-start" style="padding-top:6px">
 
       <!-- ① 16回 STARTER -->
-      <div class="pcrd rv" style="transition-delay:.1s">
+      <div class="rv" style="padding-top:22px;transition-delay:.1s">
+      <div class="pcrd" style="height:100%">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:22px">
           <div style="width:42px;height:42px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px rgba(99,102,241,.3)"><i class="fas fa-seedling" style="color:#fff;font-size:.95rem"></i></div>
           <div>
@@ -615,9 +616,11 @@
         </ul>
         <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" style="display:flex;justify-content:center;align-items:center;gap:7px;padding:13px;border-radius:50px;border:2px solid #6366f1;color:#6366f1;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .3s" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='transparent'"><i class="fab fa-instagram"></i>お問い合わせ</a>
       </div>
+      </div><!-- /wrapper ① -->
 
       <!-- ② 32回 STANDARD -->
-      <div class="pcrd std rv" style="transition-delay:.2s">
+      <div class="rv" style="padding-top:22px;transition-delay:.2s">
+      <div class="pcrd std" style="height:100%">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:22px">
           <div style="width:42px;height:42px;background:linear-gradient(135deg,#0077cc,#0099dd);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px rgba(0,119,204,.3)"><i class="fas fa-book-open" style="color:#fff;font-size:.95rem"></i></div>
           <div>
@@ -650,6 +653,7 @@
         </ul>
         <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" class="btn-o" style="display:flex;justify-content:center;align-items:center;gap:7px;padding:13px;font-size:.88rem"><i class="fab fa-instagram"></i>お問い合わせ</a>
       </div>
+      </div><!-- /wrapper ② -->
 
       <!-- ③ 72回 POPULAR — badge lives in wrapper, never clipped -->
       <div class="rv" style="position:relative;padding-top:22px;transition-delay:.3s">
@@ -688,10 +692,11 @@
           </ul>
           <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" class="btn-p" style="display:flex;justify-content:center;align-items:center;gap:8px;padding:15px;background:linear-gradient(135deg,#f59e0b,#ea580c);box-shadow:0 8px 32px rgba(245,158,11,.4);font-size:.9rem;border:none">今すぐ申し込む <i class="fas fa-arrow-right"></i></a>
         </div>
-      </div>
+      </div><!-- /wrapper ③ -->
 
       <!-- ④ 108回 COMPLETE -->
-      <div class="pcrd cmp rv" style="transition-delay:.4s">
+      <div class="rv" style="padding-top:22px;transition-delay:.4s">
+      <div class="pcrd cmp" style="height:100%">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:22px">
           <div style="width:42px;height:42px;background:linear-gradient(135deg,#059669,#10b981);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px rgba(5,150,105,.3)"><i class="fas fa-globe" style="color:#fff;font-size:.95rem"></i></div>
           <div>
@@ -724,6 +729,7 @@
         </ul>
         <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" style="display:flex;justify-content:center;align-items:center;gap:7px;padding:13px;border-radius:50px;border:2px solid #059669;color:#059669;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .3s" onmouseover="this.style.background='#f0fdf4'" onmouseout="this.style.background='transparent'"><i class="fab fa-instagram"></i>お問い合わせ</a>
       </div>
+      </div><!-- /wrapper ④ -->
 
     </div>
 
