@@ -55,9 +55,12 @@
     .mob.open{display:flex}
 
     /* ── HERO ── */
-    .hero-wrap{background:#fff;position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+    .hero-wrap{background:#f8fafc;position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+    .hero-bg-img{position:absolute;inset:0;z-index:0;pointer-events:none}
+    .hero-bg-img img{width:100%;height:100%;object-fit:cover;object-position:center right}
+    .hero-bg-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(255,255,255,.98) 0%,rgba(255,255,255,.9) 28%,rgba(255,255,255,.35) 52%,rgba(255,255,255,0) 72%)}
     .hero-blob{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
-    .grid-bg{background-image:linear-gradient(rgba(0,119,204,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,119,204,.06) 1px,transparent 1px);background-size:48px 48px}
+    .grid-bg{background-image:linear-gradient(rgba(0,119,204,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,119,204,.04) 1px,transparent 1px);background-size:48px 48px}
 
     /* ── CARDS ── */
     .card{background:#fff;border:1px solid rgba(0,119,204,.1);border-radius:20px;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:all .4s}
@@ -177,9 +180,12 @@
      HERO
 ══════════════════════════════════════════ -->
 <section class="hero-wrap grid-bg" style="padding-top:78px">
-  <!-- Background blobs -->
-  <div class="hero-blob" style="width:700px;height:700px;background:radial-gradient(circle,rgba(0,153,221,.1),transparent 70%);top:-200px;right:-200px"></div>
-  <div class="hero-blob" style="width:500px;height:500px;background:radial-gradient(circle,rgba(123,47,255,.07),transparent 70%);bottom:-150px;left:-150px"></div>
+  <!-- 背景写真 -->
+  <div class="hero-bg-img">
+    <img src="sailx/assets/hero-bg.jpg" alt="">
+  </div>
+  <!-- Background blobs (控えめに) -->
+  <div class="hero-blob" style="width:600px;height:600px;background:radial-gradient(circle,rgba(0,153,221,.07),transparent 70%);top:-150px;right:-100px"></div>
 
   <div class="max-w-7xl mx-auto px-5 w-full py-20 lg:py-28" style="position:relative;z-index:1">
     <div class="grid lg:grid-cols-2 gap-14 items-center">
