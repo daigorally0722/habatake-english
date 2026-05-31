@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>羽ばたけEnglish | 英語力０から大学留学へ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Noto Sans JP','Inter','sans-serif']}}}}</script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Noto Sans JP','Inter',sans-serif;background:#ffffff;color:#1e293b;overflow-x:hidden}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:#f1f5f9}
+    ::-webkit-scrollbar-thumb{background:#0099cc;border-radius:3px}
+
+    /* ── COLOURS ── */
+    :root{
+      --blue:#0077cc;
+      --blue-light:#e0f2fe;
+      --blue-mid:#0099dd;
+      --text:#1e293b;
+      --muted:#64748b;
+      --faint:#94a3b8;
+      --border:rgba(0,119,204,.1);
+      --bg1:#ffffff;
+      --bg2:#f0f9ff;
+      --bg3:#f8fafc;
+    }
+
+    /* ── TEXT EFFECTS ── */
+    .accent{color:var(--blue);font-weight:900}
+    .grad-blue{background:linear-gradient(135deg,#0077cc,#7b2fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .grad-gold{background:linear-gradient(135deg,#f59e0b,#ea580c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* ── BUTTONS ── */
+    .btn-p{background:linear-gradient(135deg,#0077cc,#0044aa);color:#fff;padding:16px 44px;border-radius:50px;font-weight:700;font-size:1rem;letter-spacing:.03em;display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:all .3s;position:relative;overflow:hidden;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(0,119,204,.25)}
+    .btn-p::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 30%,rgba(255,255,255,.25),transparent 70%);transform:translateX(-100%);transition:transform .5s}
+    .btn-p:hover::after{transform:translateX(100%)}
+    .btn-p:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,119,204,.4)}
+    .btn-o{background:#fff;color:var(--blue);padding:15px 43px;border-radius:50px;font-weight:700;font-size:1rem;letter-spacing:.03em;display:inline-flex;align-items:center;gap:10px;text-decoration:none;border:2px solid var(--blue);transition:all .3s}
+    .btn-o:hover{background:var(--blue-light);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,119,204,.18)}
+
+    /* ── NAVBAR ── */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 0;transition:all .3s;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,119,204,.08)}
+    .navbar.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 24px rgba(0,0,0,.08);padding:10px 0}
+    .navlink{color:var(--muted);font-weight:500;text-decoration:none;transition:color .2s;font-size:.92rem}
+    .navlink:hover{color:var(--blue)}
+
+    /* ── MOBILE MENU ── */
+    .mob{display:none;position:fixed;inset:0;background:rgba(255,255,255,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:36px}
+    .mob.open{display:flex}
+
+    /* ── HERO ── */
+    .hero-wrap{background:#fff;position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+    .hero-blob{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+    .grid-bg{background-image:linear-gradient(rgba(0,119,204,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,119,204,.06) 1px,transparent 1px);background-size:48px 48px}
+
+    /* ── CARDS ── */
+    .card{background:#fff;border:1px solid rgba(0,119,204,.1);border-radius:20px;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:all .4s}
+    .card:hover{border-color:rgba(0,119,204,.3);transform:translateY(-8px);box-shadow:0 16px 48px rgba(0,119,204,.14)}
+    .card:hover img{transform:scale(1.07)}
+
+    /* ── PHOTO CARD ── */
+    .pcard{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;transition:transform .4s;box-shadow:0 4px 24px rgba(0,0,0,.12)}
+    .pcard:hover{transform:translateY(-7px);box-shadow:0 20px 56px rgba(0,0,0,.18)}
+    .photo-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,50,.92) 0%,rgba(10,20,50,.45) 50%,rgba(10,20,50,.1) 100%);transition:all .4s}
+    .pcard:hover .photo-grad{background:linear-gradient(to top,rgba(10,20,50,.97) 0%,rgba(10,20,50,.6) 50%,rgba(10,20,50,.2) 100%)}
+
+    /* ── COUNTRY CARDS ── */
+    .ccard{border-radius:16px;overflow:hidden;position:relative;height:200px;cursor:pointer;transition:transform .4s;box-shadow:0 4px 20px rgba(0,0,0,.12)}
+    .ccard:hover{transform:scale(1.04)}
+    .ccard img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .ccard:hover img{transform:scale(1.08)}
+    .ccard-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,50,.88) 0%,rgba(10,20,50,.25) 100%)}
+
+    /* ── STAT BAR ── */
+    .sbar{height:4px;background:rgba(0,119,204,.12);border-radius:2px;overflow:hidden}
+    .sbar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#0077cc,#7b2fff);width:0;transition:width 1.5s ease}
+
+    /* ── PRICING ── */
+    .pcrd{background:#fff;border:1px solid rgba(0,119,204,.12);border-radius:20px;padding:34px 28px;position:relative;overflow:hidden;transition:all .4s;box-shadow:0 2px 16px rgba(0,0,0,.05)}
+    .pcrd::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0077cc,#7b2fff)}
+    .pcrd:hover{transform:translateY(-10px);border-color:rgba(0,119,204,.3);box-shadow:0 24px 72px rgba(0,119,204,.14)}
+    .pcrd.hot{background:linear-gradient(135deg,#eff6ff,#f0f9ff);border-color:rgba(0,119,204,.35);box-shadow:0 4px 32px rgba(0,119,204,.12)}
+    .pcrd.hot::before{background:linear-gradient(90deg,#f59e0b,#ea580c)}
+
+    /* ── TESTIMONIALS ── */
+    .tcard{background:#fff;border:1px solid rgba(0,119,204,.1);border-radius:20px;padding:28px;transition:all .4s;box-shadow:0 2px 14px rgba(0,0,0,.05)}
+    .tcard:hover{border-color:rgba(0,119,204,.25);transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,119,204,.12)}
+
+    /* ── FAQ ── */
+    .faq-item{border-bottom:1px solid rgba(0,119,204,.1)}
+    .faq-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+    .faq-body.open{max-height:400px}
+
+    /* ── TIMELINE ── */
+    .td::before{content:'';position:absolute;left:-36px;top:7px;width:12px;height:12px;border-radius:50%;background:#0077cc;box-shadow:0 0 10px rgba(0,119,204,.5)}
+
+    /* ── DIVIDER ── */
+    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,119,204,.2),transparent)}
+
+    /* ── SECTION TAG ── */
+    .stag{display:inline-flex;align-items:center;gap:12px;font-size:.74rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+    .stag::before,.stag::after{content:'';width:30px;height:1.5px;background:var(--blue);opacity:.5}
+
+    /* ── REVEAL ── */
+    .rv{opacity:0;transform:translateY(44px);transition:opacity .8s ease,transform .8s ease}
+    .rv.on{opacity:1;transform:none}
+    .rl{opacity:0;transform:translateX(-44px);transition:opacity .8s ease,transform .8s ease}
+    .rl.on{opacity:1;transform:none}
+    .rr{opacity:0;transform:translateX(44px);transition:opacity .8s ease,transform .8s ease}
+    .rr.on{opacity:1;transform:none}
+
+    /* ── ANIMATIONS ── */
+    @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+    @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @keyframes slideUp{0%{opacity:0;transform:translateY(56px)}100%{opacity:1;transform:translateY(0)}}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.88)}}
+    @keyframes glitch{0%,92%,100%{transform:translate(0)}93%{transform:translate(-2px,1px)}95%{transform:translate(2px,-1px)}97%{transform:translate(-1px,2px)}}
+    @keyframes badgePop{0%{opacity:0;transform:scale(.8) translateY(10px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+
+    .fl1{animation:floatA 6s ease-in-out infinite}
+    .fl2{animation:floatB 8s ease-in-out 1.5s infinite}
+    .glt{animation:glitch 5s infinite}
+    .mtrack{animation:marquee 24s linear infinite;display:flex;white-space:nowrap}
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav class="navbar" id="nb">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+    <a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <img src="sailx/assets/habatake-logo-clear.png" alt="羽ばたけEnglish"
+           style="height:46px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,119,204,.2))"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span style="display:none;align-items:center;gap:8px">
+        <div style="width:36px;height:36px;background:linear-gradient(135deg,#0077cc,#0044aa);border-radius:9px;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <span style="font-size:1.1rem;font-weight:900;color:#0f172a">羽ばたけ<span style="color:#0077cc">English</span></span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#problem" class="navlink">課題</a>
+      <a href="#features" class="navlink">特徴</a>
+      <a href="#pricing" class="navlink">料金</a>
+      <a href="#faq" class="navlink">FAQ</a>
+      <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr"
+         target="_blank" class="btn-p" style="padding:10px 22px;font-size:.9rem">
+        <i class="fab fa-instagram"></i>Instagram
+      </a>
+    </div>
+    <button id="menuBtn" class="md:hidden" style="background:none;border:none;cursor:pointer;color:#1e293b;padding:8px"><i class="fas fa-bars fa-lg"></i></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob" id="mobMenu">
+  <button id="closeBtn" style="position:absolute;top:24px;right:24px;background:none;border:none;cursor:pointer;color:#1e293b"><i class="fas fa-times fa-xl"></i></button>
+  <img src="sailx/assets/habatake-logo-clear.png" alt="Logo"
+       style="height:72px;margin-bottom:8px" onerror="this.style.display='none'">
+  <a href="#problem" onclick="closeMob()" style="color:#1e293b;font-size:1.4rem;font-weight:700;text-decoration:none">課題</a>
+  <a href="#features" onclick="closeMob()" style="color:#1e293b;font-size:1.4rem;font-weight:700;text-decoration:none">特徴</a>
+  <a href="#pricing" onclick="closeMob()" style="color:#1e293b;font-size:1.4rem;font-weight:700;text-decoration:none">料金</a>
+  <a href="#faq" onclick="closeMob()" style="color:#1e293b;font-size:1.4rem;font-weight:700;text-decoration:none">FAQ</a>
+  <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr"
+     target="_blank" class="btn-p"><i class="fab fa-instagram"></i>Instagram</a>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero-wrap grid-bg" style="padding-top:78px">
+  <!-- Background blobs -->
+  <div class="hero-blob" style="width:700px;height:700px;background:radial-gradient(circle,rgba(0,153,221,.1),transparent 70%);top:-200px;right:-200px"></div>
+  <div class="hero-blob" style="width:500px;height:500px;background:radial-gradient(circle,rgba(123,47,255,.07),transparent 70%);bottom:-150px;left:-150px"></div>
+
+  <div class="max-w-7xl mx-auto px-5 w-full py-20 lg:py-28" style="position:relative;z-index:1">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <!-- LEFT -->
+      <div>
+        <!-- Logo hero -->
+        <div style="margin-bottom:26px;animation:slideUp 1s ease .1s both">
+          <img src="sailx/assets/habatake-logo-clear.png" alt="羽ばたけEnglish"
+               style="height:84px;width:auto;filter:drop-shadow(0 4px 14px rgba(0,119,204,.3))"
+               onerror="this.style.display='none'">
+        </div>
+
+        <!-- Badge -->
+        <div style="display:inline-flex;align-items:center;gap:9px;background:#eff6ff;border:1.5px solid rgba(0,119,204,.25);border-radius:50px;padding:7px 18px;margin-bottom:24px;animation:slideUp 1s ease .2s both;animation:badgePop .8s ease .3s both">
+          <span style="width:7px;height:7px;border-radius:50%;background:#0077cc;animation:pulse 2s infinite"></span>
+          <span style="font-size:.78rem;font-weight:700;color:#0077cc;letter-spacing:.1em">IELTS対策 × 海外大学出願サポート</span>
+        </div>
+
+        <!-- HEADLINE -->
+        <h1 class="glt" style="font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:1.06;letter-spacing:-.03em;margin-bottom:22px;animation:slideUp 1s ease .35s both;color:#0f172a">
+          <span style="display:block">英語力</span>
+          <span class="grad-blue" style="display:block">ZERO</span>
+          <span style="display:block">から</span>
+          <span style="display:block">海外大学へ<span style="color:#0077cc">。</span></span>
+        </h1>
+
+        <p style="font-size:1.05rem;line-height:1.9;color:#64748b;margin-bottom:36px;max-width:510px;animation:slideUp 1s ease .55s both">
+          羽ばたけEnglishは<strong style="color:#0077cc">英語学習から大学出願まで</strong>を一貫サポート。<br>あなたの夢への第一歩を、今日ここから。
+        </p>
+
+        <div class="flex flex-wrap gap-4" style="animation:slideUp 1s ease .7s both">
+          <a href="#pricing" class="btn-p" style="font-size:1.05rem;padding:18px 46px"><i class="fas fa-rocket"></i>コースを見る</a>
+          <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" class="btn-o"><i class="fab fa-instagram"></i>Instagram</a>
+        </div>
+
+        <div class="flex flex-wrap gap-5 mt-9" style="animation:slideUp 1s ease .9s both">
+          <span style="display:flex;align-items:center;gap:7px;font-size:.84rem;color:#64748b"><i class="fas fa-check-circle" style="color:#0077cc"></i>小学生〜大学生対応</span>
+          <span style="display:flex;align-items:center;gap:7px;font-size:.84rem;color:#64748b"><i class="fas fa-check-circle" style="color:#0077cc"></i>IELTS専門対策</span>
+          <span style="display:flex;align-items:center;gap:7px;font-size:.84rem;color:#64748b"><i class="fas fa-check-circle" style="color:#0077cc"></i>出願書類サポート</span>
+        </div>
+      </div>
+
+      <!-- RIGHT – IELTS CARD -->
+      <div class="hidden lg:flex justify-center items-center" style="position:relative">
+        <div class="fl1">
+          <div style="width:360px;border-radius:28px;overflow:hidden;box-shadow:0 24px 72px rgba(0,0,0,.15);border:1px solid rgba(0,119,204,.15)">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=720&auto=format&fit=crop&q=75"
+                 alt="Students" style="width:100%;height:240px;object-fit:cover;display:block">
+            <div style="background:#fff;padding:24px">
+              <div style="font-size:.68rem;color:#94a3b8;margin-bottom:4px;letter-spacing:.14em">IELTS TARGET SCORE</div>
+              <div class="grad-gold" style="font-size:3.4rem;font-weight:900;line-height:1">7.5</div>
+              <div style="font-size:.8rem;color:#0077cc;font-weight:600;margin-bottom:16px">海外トップ大学入学基準</div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.7rem;color:#94a3b8">Reading</span><span style="font-size:.7rem;color:#0077cc;font-weight:700">8.0</span></div><div class="sbar"><div class="sbar-fill" data-w="80"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.7rem;color:#94a3b8">Writing</span><span style="font-size:.7rem;color:#0077cc;font-weight:700">7.0</span></div><div class="sbar"><div class="sbar-fill" data-w="70"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.7rem;color:#94a3b8">Listening</span><span style="font-size:.7rem;color:#0077cc;font-weight:700">8.5</span></div><div class="sbar"><div class="sbar-fill" data-w="85"></div></div></div>
+                <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.7rem;color:#94a3b8">Speaking</span><span style="font-size:.7rem;color:#0077cc;font-weight:700">7.5</span></div><div class="sbar"><div class="sbar-fill" data-w="75"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Floating badges -->
+        <div class="fl2" style="position:absolute;top:-14px;right:-32px;background:#fff;border:1px solid rgba(245,158,11,.3);border-radius:14px;padding:13px 17px;text-align:center;box-shadow:0 6px 24px rgba(245,158,11,.15)">
+          <div style="font-size:1.3rem;margin-bottom:3px">🏛️</div>
+          <div style="font-size:.66rem;color:#f59e0b;font-weight:700">QS Top 100</div>
+          <div style="font-size:.62rem;color:#94a3b8">大学合格実績</div>
+        </div>
+        <div style="position:absolute;bottom:30px;left:-44px;background:#fff;border:1px solid rgba(0,119,204,.2);border-radius:14px;padding:13px 17px;text-align:center;box-shadow:0 6px 24px rgba(0,119,204,.12);animation:floatB 7s ease-in-out 2s infinite">
+          <div style="font-size:1.3rem;margin-bottom:3px">✈️</div>
+          <div style="font-size:.66rem;color:#0077cc;font-weight:700">海外留学</div>
+          <div style="font-size:.62rem;color:#94a3b8">夢を現実に</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;animation:floatB 2.2s ease-in-out infinite;z-index:1">
+    <span style="font-size:.66rem;color:#94a3b8;letter-spacing:.22em">SCROLL</span>
+    <i class="fas fa-chevron-down" style="color:#0077cc"></i>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div style="background:linear-gradient(90deg,#0055bb,#0099cc);padding:12px 0;overflow:hidden">
+  <div class="mtrack">
+    <span style="padding:0 36px;font-weight:700;font-size:.86rem;color:#fff">🌏 英語力ゼロからスタート &nbsp;✦&nbsp; IELTS対策 &nbsp;✦&nbsp; 海外大学出願サポート &nbsp;✦&nbsp; 小学生〜大学生対応 &nbsp;✦&nbsp; マンツーマン指導 &nbsp;✦&nbsp; 英語力ゼロからスタート &nbsp;✦&nbsp; IELTS対策 &nbsp;✦&nbsp; 海外大学出願サポート &nbsp;✦&nbsp; 小学生〜大学生対応 &nbsp;✦&nbsp; マンツーマン指導 &nbsp;✦&nbsp;</span>
+    <span style="padding:0 36px;font-weight:700;font-size:.86rem;color:#fff" aria-hidden>🌏 英語力ゼロからスタート &nbsp;✦&nbsp; IELTS対策 &nbsp;✦&nbsp; 海外大学出願サポート &nbsp;✦&nbsp; 小学生〜大学生対応 &nbsp;✦&nbsp; マンツーマン指導 &nbsp;✦&nbsp; 英語力ゼロからスタート &nbsp;✦&nbsp; IELTS対策 &nbsp;✦&nbsp; 海外大学出願サポート &nbsp;✦&nbsp; 小学生〜大学生対応 &nbsp;✦&nbsp; マンツーマン指導 &nbsp;✦&nbsp;</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     STATS + DESTINATIONS
+══════════════════════════════════════════ -->
+<section style="padding:80px 0;background:#f0f9ff">
+  <div class="max-w-7xl mx-auto px-5">
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+      <div class="text-center rv" style="background:#fff;border-radius:20px;padding:28px 16px;box-shadow:0 2px 16px rgba(0,119,204,.08);border:1px solid rgba(0,119,204,.1)">
+        <div style="font-size:3.2rem;font-weight:900;color:#0077cc;line-height:1" data-counter="0">0</div>
+        <div style="color:#0077cc;font-weight:700;font-size:.88rem;margin-bottom:2px">からスタートOK</div>
+        <div style="font-size:.76rem;color:#94a3b8">英語力</div>
+      </div>
+      <div class="text-center rv" style="transition-delay:.2s;background:#fff;border-radius:20px;padding:28px 16px;box-shadow:0 2px 16px rgba(0,119,204,.08);border:1px solid rgba(0,119,204,.1)">
+        <div style="font-size:3.2rem;font-weight:900;color:#0077cc;line-height:1" data-counter="4">0</div>
+        <div style="color:#0077cc;font-weight:700;font-size:.88rem;margin-bottom:2px">技能完全対策</div>
+        <div style="font-size:.76rem;color:#94a3b8">IELTS</div>
+      </div>
+      <div class="text-center rv" style="transition-delay:.4s;background:#fff;border-radius:20px;padding:28px 16px;box-shadow:0 2px 16px rgba(0,119,204,.08);border:1px solid rgba(0,119,204,.1)">
+        <div style="font-size:3.2rem;font-weight:900;color:#0077cc;line-height:1" data-counter="108">0</div>
+        <div style="color:#0077cc;font-weight:700;font-size:.88rem;margin-bottom:2px">回コースまで</div>
+        <div style="font-size:.76rem;color:#94a3b8">最大</div>
+      </div>
+      <div class="text-center rv" style="transition-delay:.6s;background:#fff;border-radius:20px;padding:28px 16px;box-shadow:0 2px 16px rgba(0,119,204,.08);border:1px solid rgba(0,119,204,.1)">
+        <div style="font-size:3.2rem;font-weight:900;color:#0077cc;line-height:1" data-counter="100">0</div>
+        <div style="color:#0077cc;font-weight:700;font-size:.88rem;margin-bottom:2px">%全力コミット</div>
+        <div style="font-size:.76rem;color:#94a3b8">夢への</div>
+      </div>
+    </div>
+
+    <!-- DESTINATIONS -->
+    <div class="rv mb-8">
+      <div class="stag">DESTINATIONS</div>
+      <h2 style="font-size:clamp(1.7rem,3vw,2.7rem);font-weight:900;color:#0f172a;margin-bottom:8px">目指せる留学先</h2>
+      <p style="color:#64748b;font-size:.9rem;margin-bottom:30px">世界の名門大学へ、あなたを送り出します</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <!-- 🇲🇾 MALAYSIA (1番左) -->
+      <div class="ccard rv" style="transition-delay:.1s">
+        <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&auto=format&fit=crop&q=70" alt="Malaysia">
+        <div class="ccard-ov"></div>
+        <div style="position:absolute;bottom:14px;left:14px">
+          <div style="font-size:1.5rem;margin-bottom:2px">🇲🇾</div>
+          <div style="font-weight:700;color:#fff;font-size:.95rem">マレーシア</div>
+          <div style="font-size:.68rem;color:rgba(255,255,255,.7)">UM / Monash Malaysia</div>
+        </div>
+      </div>
+      <!-- UK -->
+      <div class="ccard rv" style="transition-delay:.2s">
+        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&auto=format&fit=crop&q=70" alt="UK">
+        <div class="ccard-ov"></div>
+        <div style="position:absolute;bottom:14px;left:14px">
+          <div style="font-size:1.5rem;margin-bottom:2px">🇬🇧</div>
+          <div style="font-weight:700;color:#fff;font-size:.95rem">イギリス</div>
+          <div style="font-size:.68rem;color:rgba(255,255,255,.7)">Oxford / Cambridge</div>
+        </div>
+      </div>
+      <!-- Australia -->
+      <div class="ccard rv" style="transition-delay:.3s">
+        <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&auto=format&fit=crop&q=70" alt="Australia">
+        <div class="ccard-ov"></div>
+        <div style="position:absolute;bottom:14px;left:14px">
+          <div style="font-size:1.5rem;margin-bottom:2px">🇦🇺</div>
+          <div style="font-weight:700;color:#fff;font-size:.95rem">オーストラリア</div>
+          <div style="font-size:.68rem;color:rgba(255,255,255,.7)">Melbourne / ANU</div>
+        </div>
+      </div>
+      <!-- USA -->
+      <div class="ccard rv" style="transition-delay:.4s">
+        <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&auto=format&fit=crop&q=70" alt="USA">
+        <div class="ccard-ov"></div>
+        <div style="position:absolute;bottom:14px;left:14px">
+          <div style="font-size:1.5rem;margin-bottom:2px">🇺🇸</div>
+          <div style="font-weight:700;color:#fff;font-size:.95rem">アメリカ</div>
+          <div style="font-size:.68rem;color:rgba(255,255,255,.7)">Harvard / MIT</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════
+     PROBLEM
+══════════════════════════════════════════ -->
+<section id="problem" style="padding:100px 0;background:#fff;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(255,80,80,.04),transparent 55%);pointer-events:none"></div>
+  <div class="max-w-7xl mx-auto px-5" style="position:relative">
+    <div class="text-center mb-16 rv">
+      <div class="stag">PROBLEM</div>
+      <h2 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#0f172a;margin-bottom:14px">こんな<span style="color:#e53e3e">悩み</span>はありませんか？</h2>
+      <p style="color:#64748b;max-width:540px;margin:0 auto;font-size:.93rem">多くの学生が海外進学の夢を持ちながら、最初の一歩を踏み出せずにいます。</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="card rv" style="overflow:hidden;padding:0">
+        <div style="height:160px;overflow:hidden;position:relative">
+          <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&auto=format&fit=crop&q=72"
+               alt="Student struggling" style="width:100%;height:100%;object-fit:cover;transition:transform .45s">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(229,62,62,.35),rgba(229,62,62,.1))"></div>
+          <span style="position:absolute;top:12px;left:14px;background:rgba(229,62,62,.85);color:#fff;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.07em">悩み 01</span>
+        </div>
+        <div style="padding:22px 24px">
+          <h3 style="font-size:1.02rem;font-weight:700;color:#0f172a;margin-bottom:8px">英語がまったくできない</h3>
+          <p style="color:#64748b;line-height:1.75;font-size:.88rem">アルファベットは読めるけど、会話や長文は全然…という状態からでも大丈夫？</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card rv" style="overflow:hidden;padding:0;transition-delay:.1s">
+        <div style="height:160px;overflow:hidden;position:relative">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&auto=format&fit=crop&q=72"
+               alt="IELTS exam" style="width:100%;height:100%;object-fit:cover;transition:transform .45s">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(229,62,62,.35),rgba(229,62,62,.1))"></div>
+          <span style="position:absolute;top:12px;left:14px;background:rgba(229,62,62,.85);color:#fff;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.07em">悩み 02</span>
+        </div>
+        <div style="padding:22px 24px">
+          <h3 style="font-size:1.02rem;font-weight:700;color:#0f172a;margin-bottom:8px">IELTSって何から始めれば？</h3>
+          <p style="color:#64748b;line-height:1.75;font-size:.88rem">試験の種類が多すぎて何が必要か分からない。受験のタイミングも不明。</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card rv" style="overflow:hidden;padding:0;transition-delay:.2s">
+        <div style="height:160px;overflow:hidden;position:relative">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&auto=format&fit=crop&q=72"
+               alt="Documents" style="width:100%;height:100%;object-fit:cover;transition:transform .45s">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(229,62,62,.35),rgba(229,62,62,.1))"></div>
+          <span style="position:absolute;top:12px;left:14px;background:rgba(229,62,62,.85);color:#fff;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.07em">悩み 03</span>
+        </div>
+        <div style="padding:22px 24px">
+          <h3 style="font-size:1.02rem;font-weight:700;color:#0f172a;margin-bottom:8px">出願書類の作り方が不明</h3>
+          <p style="color:#64748b;line-height:1.75;font-size:.88rem">SOP・推薦状…何をどう書けばいいのか、全くイメージできない。</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card rv" style="overflow:hidden;padding:0;transition-delay:.3s">
+        <div style="height:160px;overflow:hidden;position:relative">
+          <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=600&auto=format&fit=crop&q=72"
+               alt="Money concern" style="width:100%;height:100%;object-fit:cover;transition:transform .45s">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(229,62,62,.35),rgba(229,62,62,.1))"></div>
+          <span style="position:absolute;top:12px;left:14px;background:rgba(229,62,62,.85);color:#fff;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.07em">悩み 04</span>
+        </div>
+        <div style="padding:22px 24px">
+          <h3 style="font-size:1.02rem;font-weight:700;color:#0f172a;margin-bottom:8px">費用が心配…</h3>
+          <p style="color:#64748b;line-height:1.75;font-size:.88rem">大手予備校は高すぎる。もっとコスパ良く、本格的なサポートを受けたい。</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card rv" style="overflow:hidden;padding:0;transition-delay:.4s">
+        <div style="height:160px;overflow:hidden;position:relative">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=72"
+               alt="Young student" style="width:100%;height:100%;object-fit:cover;transition:transform .45s">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(229,62,62,.35),rgba(229,62,62,.1))"></div>
+          <span style="position:absolute;top:12px;left:14px;background:rgba(229,62,62,.85);color:#fff;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.07em">悩み 05</span>
+        </div>
+        <div style="padding:22px 24px">
+          <h3 style="font-size:1.02rem;font-weight:700;color:#0f172a;margin-bottom:8px">いつから始めればいい？</h3>
+          <p style="color:#64748b;line-height:1.75;font-size:.88rem">小学生でも？高校生でも間に合う？自分の年齢からのロードマップが見えない。</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card rv" style="overflow:hidden;padding:0;transition-delay:.5s">
+        <div style="height:160px;overflow:hidden;position:relative">
+          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&auto=format&fit=crop&q=72"
+               alt="World map travel" style="width:100%;height:100%;object-fit:cover;transition:transform .45s">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(229,62,62,.35),rgba(229,62,62,.1))"></div>
+          <span style="position:absolute;top:12px;left:14px;background:rgba(229,62,62,.85);color:#fff;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.07em">悩み 06</span>
+        </div>
+        <div style="padding:22px 24px">
+          <h3 style="font-size:1.02rem;font-weight:700;color:#0f172a;margin-bottom:8px">どの国・大学がいいの？</h3>
+          <p style="color:#64748b;line-height:1.75;font-size:.88rem">UK・豪・米・マレーシア…目標大学の選び方から必要スコアまで全部謎。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════
+     SOLUTION
+══════════════════════════════════════════ -->
+<section style="padding:100px 0;background:#f0f9ff;position:relative;overflow:hidden">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Photo -->
+      <div class="rl">
+        <div style="border-radius:24px;overflow:hidden;position:relative;box-shadow:0 20px 64px rgba(0,0,0,.14)">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=900&auto=format&fit=crop&q=75"
+               alt="Student with laptop" style="width:100%;height:420px;object-fit:cover;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,50,.85) 0%,rgba(10,20,50,.15) 60%,transparent 100%)"></div>
+          <!-- Overlay card -->
+          <div style="position:absolute;bottom:24px;left:24px;right:24px;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 20px rgba(0,0,0,.1)">
+            <img src="sailx/assets/habatake-logo-clear.png" alt="" style="height:40px" onerror="this.style.display='none'">
+            <div>
+              <div style="font-weight:700;color:#0f172a;font-size:.9rem">英語力ゼロからでも大丈夫。</div>
+              <div style="font-size:.76rem;color:#64748b;margin-top:1px">一人ひとりのペースに合わせたサポート</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="rr">
+        <div class="stag">SOLUTION</div>
+        <h2 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#0f172a;line-height:1.18;margin-bottom:18px">すべての悩みを<br><span class="grad-blue">ワンストップ</span>で解決。</h2>
+        <p style="font-size:1rem;color:#64748b;line-height:1.85;margin-bottom:34px">羽ばたけEnglishは<strong style="color:#0f172a">英語力ゼロ</strong>の状態から始められる唯一のプログラム。IELTSスコア取得から志望大学選定、出願書類作成まで完全サポートします。</p>
+        <div style="border-left:2px solid rgba(0,119,204,.3);padding-left:32px">
+          <div class="td" style="margin-bottom:22px;position:relative"><div style="font-weight:700;color:#0f172a;margin-bottom:4px;font-size:.93rem">STEP 1 — 英語基礎力構築</div><div style="color:#64748b;font-size:.84rem">アルファベットから始まる丁寧な基礎固め</div></div>
+          <div class="td" style="margin-bottom:22px;position:relative"><div style="font-weight:700;color:#0f172a;margin-bottom:4px;font-size:.93rem">STEP 2 — IELTS集中対策</div><div style="color:#64748b;font-size:.84rem">4技能（R/W/L/S）を体系的にスコアアップ</div></div>
+          <div class="td" style="margin-bottom:22px;position:relative"><div style="font-weight:700;color:#0f172a;margin-bottom:4px;font-size:.93rem">STEP 3 — 志望校リサーチ</div><div style="color:#64748b;font-size:.84rem">あなたに合った大学・学部を一緒に選定</div></div>
+          <div class="td" style="position:relative"><div style="font-weight:700;color:#0f172a;margin-bottom:4px;font-size:.93rem">STEP 4 — 出願書類サポート</div><div style="color:#64748b;font-size:.84rem">SOP・推薦状・エッセイを徹底サポート</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════
+     FEATURES
+══════════════════════════════════════════ -->
+<section id="features" style="padding:100px 0;background:#fff">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-16 rv">
+      <div class="stag">FEATURES</div>
+      <h2 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#0f172a;margin-bottom:14px">なぜ<span class="accent">羽ばたけEnglish</span>なのか</h2>
+      <p style="color:#64748b;max-width:520px;margin:0 auto;font-size:.93rem">他の英語塾とは一線を画す、唯一無二のプログラム。</p>
+    </div>
+
+    <!-- BIG PHOTO CARDS -->
+    <div class="grid lg:grid-cols-3 gap-6 mb-6">
+      <div class="pcard rv" style="height:380px;transition-delay:.1s">
+        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&auto=format&fit=crop&q=70"
+             alt="Student studying" style="width:100%;height:100%;object-fit:cover">
+        <div class="photo-grad"></div>
+        <div style="position:absolute;top:18px;left:18px;background:rgba(0,119,204,.85);border-radius:50px;padding:5px 15px;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.08em">FEATURE 01</div>
+        <div style="position:absolute;bottom:22px;left:22px;right:22px">
+          <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:7px">英語力ゼロから対応</h3>
+          <p style="color:rgba(255,255,255,.8);font-size:.83rem;line-height:1.7">英語がまったくできない状態からスタートOK。基礎から丁寧に積み上げ、確実にIELTSスコアへ。</p>
+        </div>
+      </div>
+      <div class="pcard rv" style="height:380px;transition-delay:.2s">
+        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&auto=format&fit=crop&q=70"
+             alt="University campus" style="width:100%;height:100%;object-fit:cover">
+        <div class="photo-grad"></div>
+        <div style="position:absolute;top:18px;left:18px;background:rgba(245,158,11,.9);border-radius:50px;padding:5px 15px;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.08em">FEATURE 02</div>
+        <div style="position:absolute;bottom:22px;left:22px;right:22px">
+          <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:7px">出願まで完全伴走</h3>
+          <p style="color:rgba(255,255,255,.8);font-size:.83rem;line-height:1.7">IELTS取得で終わりではありません。志望校選定・書類・面接まで合格まで一緒に走り抜けます。</p>
+        </div>
+      </div>
+      <div class="pcard rv" style="height:380px;transition-delay:.3s">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=70"
+             alt="Young learner" style="width:100%;height:100%;object-fit:cover">
+        <div class="photo-grad"></div>
+        <div style="position:absolute;top:18px;left:18px;background:rgba(123,47,255,.9);border-radius:50px;padding:5px 15px;font-size:.7rem;font-weight:700;color:#fff;letter-spacing:.08em">FEATURE 03</div>
+        <div style="position:absolute;bottom:22px;left:22px;right:22px">
+          <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:7px">小〜大学生まで対応</h3>
+          <p style="color:rgba(255,255,255,.8);font-size:.83rem;line-height:1.7">小学生からの早期スタートで圧倒的アドバンテージ。高校生・大学生も今から間に合います。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUB FEATURES -->
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="card p-7 rv flex items-start gap-5"><div style="font-size:1.75rem;flex-shrink:0">📊</div><div><h3 style="font-size:.98rem;font-weight:700;color:#0f172a;margin-bottom:6px">データドリブンな学習管理</h3><p style="color:#64748b;font-size:.87rem;line-height:1.72">4技能ごとの弱点を分析し、最短でスコアアップできる個別カリキュラムを設計。</p></div></div>
+      <div class="card p-7 rv flex items-start gap-5" style="transition-delay:.1s"><div style="font-size:1.75rem;flex-shrink:0">🌐</div><div><h3 style="font-size:.98rem;font-weight:700;color:#0f172a;margin-bottom:6px">英語圏大学の最新情報</h3><p style="color:#64748b;font-size:.87rem;line-height:1.72">UK・豪・米・マレーシアの最新出願要件・奨学金情報を常にアップデート。</p></div></div>
+      <div class="card p-7 rv flex items-start gap-5" style="transition-delay:.2s"><div style="font-size:1.75rem;flex-shrink:0">✍️</div><div><h3 style="font-size:.98rem;font-weight:700;color:#0f172a;margin-bottom:6px">ライティング徹底強化</h3><p style="color:#64748b;font-size:.87rem;line-height:1.72">IELTS Writingは独学で伸ばしにくい。プロの添削で確実にバンドスコアを上げます。</p></div></div>
+      <div class="card p-7 rv flex items-start gap-5" style="transition-delay:.3s"><div style="font-size:1.75rem;flex-shrink:0">🎤</div><div><h3 style="font-size:.98rem;font-weight:700;color:#0f172a;margin-bottom:6px">スピーキング実践練習</h3><p style="color:#64748b;font-size:.87rem;line-height:1.72">実際の試験に近い形式で繰り返し練習。自信を持って本番に臨める実力を。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════ -->
+<section style="padding:100px 0;background:#f8fafc">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-16 rv">
+      <div class="stag">TESTIMONIALS</div>
+      <h2 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#0f172a;margin-bottom:14px">生徒・保護者の<span class="grad-gold">声</span></h2>
+    </div>
+
+    <!-- HERO TESTIMONIAL -->
+    <div class="rv mb-8">
+      <div style="border-radius:24px;overflow:hidden;position:relative;box-shadow:0 16px 56px rgba(0,0,0,.12)">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1400&auto=format&fit=crop&q=70"
+             alt="Students" style="width:100%;height:340px;object-fit:cover;display:block;object-position:center 30%">
+        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(10,20,50,.94) 0%,rgba(10,20,50,.55) 55%,rgba(10,20,50,.1) 100%)"></div>
+        <div style="position:absolute;top:50%;left:44px;transform:translateY(-50%);max-width:480px">
+          <div style="display:flex;gap:4px;margin-bottom:12px"><i class="fas fa-star" style="color:#f59e0b"></i><i class="fas fa-star" style="color:#f59e0b"></i><i class="fas fa-star" style="color:#f59e0b"></i><i class="fas fa-star" style="color:#f59e0b"></i><i class="fas fa-star" style="color:#f59e0b"></i></div>
+          <p style="font-size:1.2rem;font-weight:600;color:#fff;line-height:1.72;margin-bottom:18px">"出願書類の書き方まで教えてもらえるとは思っていませんでした。SOPの添削が特に助かり、第一志望に合格できました！"</p>
+          <div style="display:flex;align-items:center;gap:13px">
+            <img src="https://images.unsplash.com/photo-1619895862022-09114b41f16f?w=200&auto=format&fit=crop&q=70" alt="" style="width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,153,220,.5)">
+            <div><div style="font-weight:700;color:#fff">Y.M さん</div><div style="font-size:.75rem;color:rgba(255,255,255,.65)">大学3年生 / 英国大学院合格</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 CARDS -->
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="tcard rv">
+        <div style="display:flex;gap:3px;margin-bottom:11px"><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i></div>
+        <p style="color:#64748b;line-height:1.8;margin-bottom:17px;font-size:.89rem">「英語が全くできない状態からスタートしましたが、先生が丁寧に基礎から教えてくれて半年でIELTS 6.0を取得できました！」</p>
+        <div style="display:flex;align-items:center;gap:11px">
+          <img src="https://images.unsplash.com/photo-1613896640137-bb5b31496315?w=200&auto=format&fit=crop&q=70" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,119,204,.25)">
+          <div><div style="font-weight:700;color:#0f172a;font-size:.86rem">K.S さん</div><div style="font-size:.7rem;color:#94a3b8">高校2年生 / IELTS 6.0取得</div></div>
+        </div>
+      </div>
+      <div class="tcard rv" style="transition-delay:.15s">
+        <div style="display:flex;gap:3px;margin-bottom:11px"><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i></div>
+        <p style="color:#64748b;line-height:1.8;margin-bottom:17px;font-size:.89rem">「子どもが小学生のうちから通わせてよかったです。英語が好きになったし、留学への夢が具体的になってきました！」</p>
+        <div style="display:flex;align-items:center;gap:11px">
+          <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&auto=format&fit=crop&q=70" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(245,158,11,.3)">
+          <div><div style="font-weight:700;color:#0f172a;font-size:.86rem">T.A さん（保護者）</div><div style="font-size:.7rem;color:#94a3b8">小学5年生のお子様</div></div>
+        </div>
+      </div>
+      <div class="tcard rv" style="transition-delay:.3s">
+        <div style="display:flex;gap:3px;margin-bottom:11px"><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i><i class="fas fa-star" style="color:#f59e0b;font-size:.82rem"></i></div>
+        <p style="color:#64748b;line-height:1.8;margin-bottom:17px;font-size:.89rem">「中学から通い始めて高2でIELTS 7.0達成。先生のサポートなしでは考えられなかった結果です！」</p>
+        <div style="display:flex;align-items:center;gap:11px">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&auto=format&fit=crop&q=70" alt="" style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid rgba(123,47,255,.3)">
+          <div><div style="font-weight:700;color:#0f172a;font-size:.86rem">R.N さん</div><div style="font-size:.7rem;color:#94a3b8">高校2年生 / IELTS 7.0取得</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════ -->
+<section id="pricing" style="padding:100px 0;background:#fff">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-16 rv">
+      <div class="stag">PRICING</div>
+      <h2 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#0f172a;margin-bottom:14px"><span class="accent">IELTSコース</span>料金プラン</h2>
+      <p style="color:#64748b;max-width:540px;margin:0 auto;font-size:.93rem">回数券制で、ご自身のペースに合わせた学習が可能。まとめてのお支払いでよりお得に受講できます。</p>
+    </div>
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+      <!-- 16回 -->
+      <div class="pcrd rv" style="transition-delay:.1s">
+        <div style="margin-bottom:20px"><div style="font-size:.7rem;color:#94a3b8;letter-spacing:.15em;margin-bottom:7px">STARTER</div><div style="font-size:1.3rem;font-weight:900;color:#0f172a;margin-bottom:2px">16回コース</div><div style="font-size:.76rem;color:#94a3b8">約4ヶ月</div></div>
+        <div style="margin-bottom:20px"><div style="font-size:2.5rem;font-weight:900;color:#0077cc;line-height:1">¥4,000</div><div style="font-size:.74rem;color:#94a3b8;margin-top:3px">/ 1回あたり</div></div>
+        <div style="background:#f0f9ff;border-radius:11px;padding:13px;margin-bottom:20px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:#64748b;font-size:.8rem">月々払い</span><span style="color:#0f172a;font-weight:700;font-size:.8rem">¥16,000 × 4ヶ月</span></div><div style="display:flex;justify-content:space-between"><span style="color:#64748b;font-size:.8rem">一括払い</span><span style="color:#0077cc;font-weight:700">¥64,000</span></div></div>
+        <ul style="list-style:none;margin-bottom:26px;display:flex;flex-direction:column;gap:8px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>IELTS基礎〜中級対策</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>4技能バランス強化</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>学習計画サポート</li>
+        </ul>
+        <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" class="btn-o" style="display:flex;justify-content:center;padding:12px;font-size:.88rem">お問い合わせ</a>
+      </div>
+
+      <!-- 32回 -->
+      <div class="pcrd rv" style="transition-delay:.2s">
+        <div style="margin-bottom:20px"><div style="font-size:.7rem;color:#94a3b8;letter-spacing:.15em;margin-bottom:7px">STANDARD</div><div style="font-size:1.3rem;font-weight:900;color:#0f172a;margin-bottom:2px">32回コース</div><div style="font-size:.76rem;color:#94a3b8">約5ヶ月</div></div>
+        <div style="margin-bottom:20px"><div style="font-size:2.5rem;font-weight:900;color:#0077cc;line-height:1">¥3,400</div><div style="font-size:.74rem;color:#94a3b8;margin-top:3px">/ 1回あたり</div></div>
+        <div style="background:#f0f9ff;border-radius:11px;padding:13px;margin-bottom:20px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:#64748b;font-size:.8rem">月々払い</span><span style="color:#0f172a;font-weight:700;font-size:.8rem">¥21,760 × 5ヶ月</span></div><div style="display:flex;justify-content:space-between"><span style="color:#64748b;font-size:.8rem">一括払い</span><span style="color:#0077cc;font-weight:700">¥108,800</span></div></div>
+        <ul style="list-style:none;margin-bottom:26px;display:flex;flex-direction:column;gap:8px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>IELTS中級〜上級対策</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>ライティング徹底添削</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>模擬試験対策</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>志望校リサーチ開始</li>
+        </ul>
+        <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" class="btn-o" style="display:flex;justify-content:center;padding:12px;font-size:.88rem">お問い合わせ</a>
+      </div>
+
+      <!-- 72回 POPULAR -->
+      <div class="pcrd hot rv" style="transition-delay:.3s">
+        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;font-size:.68rem;font-weight:900;padding:5px 17px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 14px rgba(245,158,11,.4)">⭐ 人気No.1</div>
+        <div style="margin-bottom:20px"><div style="font-size:.7rem;color:#f59e0b;letter-spacing:.15em;margin-bottom:7px">POPULAR</div><div style="font-size:1.3rem;font-weight:900;color:#0f172a;margin-bottom:2px">72回コース</div><div style="font-size:.76rem;color:#94a3b8">約7ヶ月</div></div>
+        <div style="margin-bottom:20px"><div style="font-size:2.5rem;font-weight:900;color:#f59e0b;line-height:1">¥2,700</div><div style="font-size:.74rem;color:#94a3b8;margin-top:3px">/ 1回あたり</div></div>
+        <div style="background:rgba(245,158,11,.08);border-radius:11px;padding:13px;margin-bottom:20px;border:1px solid rgba(245,158,11,.2)"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:#64748b;font-size:.8rem">月々払い</span><span style="color:#0f172a;font-weight:700;font-size:.8rem">¥27,771 × 7ヶ月</span></div><div style="display:flex;justify-content:space-between"><span style="color:#64748b;font-size:.8rem">一括払い</span><span style="color:#f59e0b;font-weight:700">¥194,400</span></div></div>
+        <ul style="list-style:none;margin-bottom:26px;display:flex;flex-direction:column;gap:8px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#f59e0b;font-size:.78rem"></i>IELTS完全対策</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#f59e0b;font-size:.78rem"></i>出願書類作成サポート</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#f59e0b;font-size:.78rem"></i>SOP・エッセイ添削</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#f59e0b;font-size:.78rem"></i>志望校選定サポート</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#f59e0b;font-size:.78rem"></i>面接対策</li>
+        </ul>
+        <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" class="btn-p" style="display:flex;justify-content:center;padding:15px;background:linear-gradient(135deg,#f59e0b,#ea580c);box-shadow:0 8px 32px rgba(245,158,11,.35)">今すぐ申し込む <i class="fas fa-arrow-right ml-2"></i></a>
+      </div>
+
+      <!-- 108回 -->
+      <div class="pcrd rv" style="transition-delay:.4s">
+        <div style="margin-bottom:20px"><div style="font-size:.7rem;color:#94a3b8;letter-spacing:.15em;margin-bottom:7px">COMPLETE</div><div style="font-size:1.3rem;font-weight:900;color:#0f172a;margin-bottom:2px">108回コース</div><div style="font-size:.76rem;color:#94a3b8">約9ヶ月</div></div>
+        <div style="margin-bottom:20px"><div style="font-size:2.5rem;font-weight:900;color:#0077cc;line-height:1">¥2,300</div><div style="font-size:.74rem;color:#94a3b8;margin-top:3px">/ 1回あたり</div></div>
+        <div style="background:#f0f9ff;border-radius:11px;padding:13px;margin-bottom:20px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:#64748b;font-size:.8rem">月々払い</span><span style="color:#0f172a;font-weight:700;font-size:.8rem">¥27,600 × 9ヶ月</span></div><div style="display:flex;justify-content:space-between"><span style="color:#64748b;font-size:.8rem">一括払い</span><span style="color:#0077cc;font-weight:700">¥248,400</span></div></div>
+        <ul style="list-style:none;margin-bottom:26px;display:flex;flex-direction:column;gap:8px">
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>ゼロから出願まで完全対応</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>最大割引価格</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>複数大学の出願サポート</li>
+          <li style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:#64748b"><i class="fas fa-check" style="color:#0077cc;font-size:.78rem"></i>奨学金申請サポート</li>
+        </ul>
+        <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank" class="btn-o" style="display:flex;justify-content:center;padding:12px;font-size:.88rem">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="text-center mt-10 rv">
+      <p style="color:#94a3b8;font-size:.8rem">※ 全コース回数券制。有効期限内であれば自由なペースで受講可能です。<br>※ 料金はすべて税込表示です。お支払い方法の詳細はお問い合わせください。</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section id="faq" style="padding:100px 0;background:#f8fafc">
+  <div class="max-w-3xl mx-auto px-5">
+    <div class="text-center mb-16 rv">
+      <div class="stag">FAQ</div>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#0f172a;margin-bottom:14px">よくある<span class="accent">ご質問</span></h2>
+    </div>
+    <div style="background:#fff;border-radius:20px;padding:8px 0;box-shadow:0 2px 20px rgba(0,119,204,.08);border:1px solid rgba(0,119,204,.1)">
+      <div class="faq-item rv" style="padding:22px 28px">
+        <button onclick="faq(this)" style="width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left"><span style="font-size:.94rem;font-weight:700;color:#0f172a;line-height:1.5">英語が全くできない状態から始められますか？</span><i class="fas fa-plus" style="color:#0077cc;font-size:.88rem;flex-shrink:0;transition:transform .3s"></i></button>
+        <div class="faq-body"><p style="color:#64748b;line-height:1.8;padding-top:12px;font-size:.89rem">はい！「英語力ゼロから大学留学へ」がコンセプト。アルファベットから始めても大丈夫。一人ひとりのレベルに合わせたカリキュラムでスタートします。</p></div>
+      </div>
+      <div class="faq-item rv" style="padding:22px 28px;transition-delay:.1s">
+        <button onclick="faq(this)" style="width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left"><span style="font-size:.94rem;font-weight:700;color:#0f172a;line-height:1.5">何歳から受講できますか？</span><i class="fas fa-plus" style="color:#0077cc;font-size:.88rem;flex-shrink:0;transition:transform .3s"></i></button>
+        <div class="faq-body"><p style="color:#64748b;line-height:1.8;padding-top:12px;font-size:.89rem">小学生から大学生まで幅広く対応しています。小学生には英語を楽しむ基礎固めから、中高生・大学生にはIELTS対策・出願サポートまで年齢・レベルに応じたプログラムをご用意しています。</p></div>
+      </div>
+      <div class="faq-item rv" style="padding:22px 28px;transition-delay:.2s">
+        <button onclick="faq(this)" style="width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left"><span style="font-size:.94rem;font-weight:700;color:#0f172a;line-height:1.5">オンラインでの受講は可能ですか？</span><i class="fas fa-plus" style="color:#0077cc;font-size:.88rem;flex-shrink:0;transition:transform .3s"></i></button>
+        <div class="faq-body"><p style="color:#64748b;line-height:1.8;padding-top:12px;font-size:.89rem">はい、オンライン受講が可能です。日本全国どこからでも受講いただけます。使用環境（Zoom等）についてはお問い合わせください。</p></div>
+      </div>
+      <div class="faq-item rv" style="padding:22px 28px;transition-delay:.3s">
+        <button onclick="faq(this)" style="width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left"><span style="font-size:.94rem;font-weight:700;color:#0f172a;line-height:1.5">どのコースから始めればいいか分かりません。</span><i class="fas fa-plus" style="color:#0077cc;font-size:.88rem;flex-shrink:0;transition:transform .3s"></i></button>
+        <div class="faq-body"><p style="color:#64748b;line-height:1.8;padding-top:12px;font-size:.89rem">まずはInstagramのDMからご連絡ください。英語レベルや目標をヒアリングした上で、最適なコースをご提案します。無料相談も実施中です！</p></div>
+      </div>
+      <div class="faq-item rv" style="padding:22px 28px;transition-delay:.4s">
+        <button onclick="faq(this)" style="width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left"><span style="font-size:.94rem;font-weight:700;color:#0f172a;line-height:1.5">出願書類のサポートとは具体的に何をしてもらえますか？</span><i class="fas fa-plus" style="color:#0077cc;font-size:.88rem;flex-shrink:0;transition:transform .3s"></i></button>
+        <div class="faq-body"><p style="color:#64748b;line-height:1.8;padding-top:12px;font-size:.89rem">志望動機書（SOP / Personal Statement）の作成・添削、推薦状の依頼方法アドバイス、志望大学・学部の選定サポート、出願スケジュール管理などを行っています。</p></div>
+      </div>
+      <div class="rv" style="padding:22px 28px;transition-delay:.5s">
+        <button onclick="faq(this)" style="width:100%;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left"><span style="font-size:.94rem;font-weight:700;color:#0f172a;line-height:1.5">回数券の有効期限はありますか？</span><i class="fas fa-plus" style="color:#0077cc;font-size:.88rem;flex-shrink:0;transition:transform .3s"></i></button>
+        <div class="faq-body"><p style="color:#64748b;line-height:1.8;padding-top:12px;font-size:.89rem">有効期限については購入時にご確認ください。基本的にはコース回数÷週あたり受講回数で算出した期間内での消化を目安としています。詳細はお問い合わせください。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FINAL CTA  (唯一ダークなセクション＝視覚的インパクト)
+══════════════════════════════════════════ -->
+<section style="background:linear-gradient(135deg,#003d8c 0%,#0077cc 50%,#00aadd 100%);padding:110px 0;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px;pointer-events:none"></div>
+  <!-- Blobs -->
+  <div style="position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none"></div>
+  <div style="position:absolute;bottom:-120px;left:-80px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none"></div>
+
+  <div class="max-w-4xl mx-auto px-5 text-center" style="position:relative">
+    <div class="rv">
+      <div style="margin-bottom:26px">
+        <img src="sailx/assets/habatake-logo-clear.png" alt="羽ばたけEnglish"
+             style="height:88px;width:auto;margin:0 auto;filter:brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0,0,0,.2))"
+             onerror="this.style.display='none'">
+      </div>
+      <div class="stag" style="justify-content:center;color:rgba(255,255,255,.8)">GET STARTED</div>
+      <h2 style="font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:18px">あなたの夢を、<br>今日から動かそう。</h2>
+      <p style="font-size:1.05rem;color:rgba(255,255,255,.82);line-height:1.9;max-width:540px;margin:0 auto 40px">英語力ゼロでも大丈夫。一歩踏み出す勇気さえあれば、海外の大学への扉は必ず開きます。まずはInstagramでフォロー＆DMを。無料相談も受付中です。</p>
+      <div class="flex flex-wrap justify-center gap-5">
+        <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr" target="_blank"
+           style="background:#fff;color:#0055aa;padding:19px 50px;border-radius:50px;font-weight:700;font-size:1.05rem;display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:all .3s;box-shadow:0 6px 24px rgba(0,0,0,.2)"
+           onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 14px 40px rgba(0,0,0,.25)'"
+           onmouseout="this.style.transform='none';this.style.boxShadow='0 6px 24px rgba(0,0,0,.2)'">
+          <i class="fab fa-instagram"></i>Instagramをフォロー
+        </a>
+        <a href="#pricing"
+           style="background:transparent;color:#fff;padding:18px 50px;border-radius:50px;font-weight:700;font-size:1.05rem;display:inline-flex;align-items:center;gap:10px;text-decoration:none;border:2px solid rgba(255,255,255,.6);transition:all .3s"
+           onmouseover="this.style.background='rgba(255,255,255,.12)';this.style.transform='translateY(-3px)'"
+           onmouseout="this.style.background='transparent';this.style.transform='none'">
+          料金を確認する
+        </a>
+      </div>
+      <p style="margin-top:24px;font-size:.76rem;color:rgba(255,255,255,.55)"><i class="fas fa-lock mr-2"></i>無料相談受付中 &nbsp;|&nbsp; <i class="fas fa-clock mr-2"></i>平日対応 &nbsp;|&nbsp; <i class="fas fa-shield-alt mr-2"></i>安心のサポート体制</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer style="background:#0f172a;padding:52px 0 32px">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <img src="sailx/assets/habatake-logo-clear.png" alt="羽ばたけEnglish"
+             style="height:58px;margin-bottom:14px;filter:brightness(0) invert(1) opacity(.9)"
+             onerror="this.style.display='none'">
+        <p style="color:#64748b;font-size:.84rem;line-height:1.72">英語力０から大学留学へ。<br>あなたの夢の実現を全力でサポートします。</p>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#fff;margin-bottom:13px;font-size:.9rem">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <a href="#problem" style="color:#475569;text-decoration:none;font-size:.84rem;transition:color .2s" onmouseover="this.style.color='#7dd3fc'" onmouseout="this.style.color='#475569'">課題について</a>
+          <a href="#features" style="color:#475569;text-decoration:none;font-size:.84rem;transition:color .2s" onmouseover="this.style.color='#7dd3fc'" onmouseout="this.style.color='#475569'">サービスの特徴</a>
+          <a href="#pricing" style="color:#475569;text-decoration:none;font-size:.84rem;transition:color .2s" onmouseover="this.style.color='#7dd3fc'" onmouseout="this.style.color='#475569'">料金プラン</a>
+          <a href="#faq" style="color:#475569;text-decoration:none;font-size:.84rem;transition:color .2s" onmouseover="this.style.color='#7dd3fc'" onmouseout="this.style.color='#475569'">よくある質問</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#fff;margin-bottom:13px;font-size:.9rem">Follow Us</div>
+        <a href="https://www.instagram.com/habatake__english?igsh=dGkwZWJweTFxM3lh&utm_source=qr"
+           target="_blank"
+           style="display:inline-flex;align-items:center;gap:13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 20px;text-decoration:none;transition:all .3s"
+           onmouseover="this.style.background='rgba(255,255,255,.1)';this.style.transform='translateY(-3px)'"
+           onmouseout="this.style.background='rgba(255,255,255,.06)';this.style.transform='none'">
+          <i class="fab fa-instagram" style="font-size:1.35rem;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent"></i>
+          <div><div style="font-weight:700;color:#fff;font-size:.86rem">@habatake__english</div><div style="font-size:.68rem;color:#64748b">Instagram</div></div>
+        </a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px">
+      <p style="color:#334155;font-size:.78rem">© 2024 羽ばたけEnglish. All rights reserved.</p>
+      <p style="color:#334155;font-size:.78rem">TAKE FLIGHT WITH ENGLISH! 🌏</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════
+     JS
+══════════════════════════════════════════ -->
+<script>
+// Navbar
+const nb=document.getElementById('nb');
+window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>60));
+
+// Mobile menu
+document.getElementById('menuBtn').onclick=()=>document.getElementById('mobMenu').classList.add('open');
+document.getElementById('closeBtn').onclick=()=>document.getElementById('mobMenu').classList.remove('open');
+function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
+
+// Scroll reveal
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.rv,.rl,.rr').forEach(el=>obs.observe(el));
+
+// Counters
+function animCount(el,t){
+  let s=null;
+  const step=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/1800,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*t);if(p<1)requestAnimationFrame(step);else el.textContent=t};
+  requestAnimationFrame(step);
+}
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){animCount(x.target,+x.target.dataset.counter);co.unobserve(x.target)}})},{threshold:.5});
+document.querySelectorAll('[data-counter]').forEach(el=>co.observe(el));
+
+// Stat bars
+const so=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('.sbar-fill').forEach(f=>{const w=f.dataset.w;f.style.width='0';setTimeout(()=>f.style.width=w+'%',300)})}})},{threshold:.6});
+document.querySelectorAll('.fl1').forEach(el=>so.observe(el));
+
+// FAQ
+function faq(btn){
+  const body=btn.nextElementSibling,icon=btn.querySelector('i'),open=body.classList.contains('open');
+  document.querySelectorAll('.faq-body.open').forEach(b=>{b.classList.remove('open');b.previousElementSibling.querySelector('i').style.transform='rotate(0)'});
+  if(!open){body.classList.add('open');icon.style.transform='rotate(45deg)'}
+}
+
+// Mouse parallax on hero card
+document.addEventListener('mousemove',e=>{
+  const x=(e.clientX/innerWidth-.5)*10,y=(e.clientY/innerHeight-.5)*10;
+  document.querySelectorAll('.fl1').forEach(el=>el.style.transform=`translateY(calc(-10px + ${y*.2}px)) translateX(${x*.2}px)`);
+});
+</script>
+</body>
+</html>
