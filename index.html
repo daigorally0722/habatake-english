@@ -230,16 +230,18 @@
       </div>
 
       <!-- RIGHT – IELTS CARD -->
-      <div class="hidden lg:flex justify-center items-center" style="position:relative">
-        <div class="fl1">
-          <div style="width:360px;border-radius:28px;overflow:hidden;box-shadow:0 24px 72px rgba(0,0,0,.15);border:1px solid rgba(0,119,204,.15)">
+      <div class="hidden lg:flex justify-center items-center" style="position:relative;padding:40px 56px 40px 24px">
+
+        <!-- IELTSスコアカード -->
+        <div class="fl1" style="position:relative;z-index:1">
+          <div style="width:340px;border-radius:28px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.7)">
             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=720&auto=format&fit=crop&q=75"
-                 alt="Students" style="width:100%;height:240px;object-fit:cover;display:block">
-            <div style="background:#fff;padding:24px">
-              <div style="font-size:.68rem;color:#94a3b8;margin-bottom:4px;letter-spacing:.14em">IELTS TARGET SCORE</div>
-              <div class="grad-gold" style="font-size:3.4rem;font-weight:900;line-height:1">7.5</div>
-              <div style="font-size:.8rem;color:#0077cc;font-weight:600;margin-bottom:16px">海外トップ大学入学基準</div>
-              <div style="display:flex;flex-direction:column;gap:9px">
+                 alt="Students" style="width:100%;height:220px;object-fit:cover;display:block">
+            <div style="background:rgba(255,255,255,.97);backdrop-filter:blur(10px);padding:22px">
+              <div style="font-size:.66rem;color:#94a3b8;margin-bottom:3px;letter-spacing:.14em">IELTS TARGET SCORE</div>
+              <div class="grad-gold" style="font-size:3.2rem;font-weight:900;line-height:1">7.5</div>
+              <div style="font-size:.78rem;color:#0077cc;font-weight:600;margin-bottom:14px">海外トップ大学入学基準</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
                 <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.7rem;color:#94a3b8">Reading</span><span style="font-size:.7rem;color:#0077cc;font-weight:700">8.0</span></div><div class="sbar"><div class="sbar-fill" data-w="80"></div></div></div>
                 <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.7rem;color:#94a3b8">Writing</span><span style="font-size:.7rem;color:#0077cc;font-weight:700">7.0</span></div><div class="sbar"><div class="sbar-fill" data-w="70"></div></div></div>
                 <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.7rem;color:#94a3b8">Listening</span><span style="font-size:.7rem;color:#0077cc;font-weight:700">8.5</span></div><div class="sbar"><div class="sbar-fill" data-w="85"></div></div></div>
@@ -248,17 +250,29 @@
             </div>
           </div>
         </div>
-        <!-- Floating badges -->
-        <div class="fl2" style="position:absolute;top:-14px;right:-32px;background:#fff;border:1px solid rgba(245,158,11,.3);border-radius:14px;padding:13px 17px;text-align:center;box-shadow:0 6px 24px rgba(245,158,11,.15)">
-          <div style="font-size:1.3rem;margin-bottom:3px">🏛️</div>
-          <div style="font-size:.66rem;color:#f59e0b;font-weight:700">QS Top 100</div>
-          <div style="font-size:.62rem;color:#94a3b8">大学合格実績</div>
+
+        <!-- フローティングバッジ：合格サポート（右上） -->
+        <div class="fl2" style="position:absolute;top:14px;right:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border:1px solid rgba(0,119,204,.18);border-radius:18px;padding:14px 18px;box-shadow:0 8px 32px rgba(0,119,204,.16);min-width:130px">
+          <div style="display:flex;align-items:center;gap:9px">
+            <div style="width:34px;height:34px;background:linear-gradient(135deg,#0077cc,#7b2fff);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas fa-graduation-cap" style="color:#fff;font-size:.85rem"></i></div>
+            <div>
+              <div style="font-size:.68rem;font-weight:800;color:#0f172a;line-height:1.2">出願サポート</div>
+              <div style="font-size:.6rem;color:#64748b;margin-top:2px">SOP・エッセイ添削</div>
+            </div>
+          </div>
         </div>
-        <div style="position:absolute;bottom:30px;left:-44px;background:#fff;border:1px solid rgba(0,119,204,.2);border-radius:14px;padding:13px 17px;text-align:center;box-shadow:0 6px 24px rgba(0,119,204,.12);animation:floatB 7s ease-in-out 2s infinite">
-          <div style="font-size:1.3rem;margin-bottom:3px">✈️</div>
-          <div style="font-size:.66rem;color:#0077cc;font-weight:700">海外留学</div>
-          <div style="font-size:.62rem;color:#94a3b8">夢を現実に</div>
+
+        <!-- フローティングバッジ：留学先（左下） -->
+        <div style="position:absolute;bottom:28px;left:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border:1px solid rgba(0,119,204,.15);border-radius:18px;padding:14px 18px;box-shadow:0 8px 32px rgba(0,119,204,.14);animation:floatB 7s ease-in-out 2s infinite;min-width:148px">
+          <div style="display:flex;align-items:center;gap:9px">
+            <div style="width:34px;height:34px;background:linear-gradient(135deg,#059669,#10b981);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas fa-earth-asia" style="color:#fff;font-size:.85rem"></i></div>
+            <div>
+              <div style="font-size:.68rem;font-weight:800;color:#0f172a;line-height:1.2">4か国対応</div>
+              <div style="font-size:.6rem;color:#64748b;margin-top:2px">🇲🇾 🇬🇧 🇦🇺 🇺🇸</div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
